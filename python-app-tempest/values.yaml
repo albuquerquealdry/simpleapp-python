@@ -1,2 +1,2 @@
-Type: NodePort
+Type: LoadBalancer
 Port: 80

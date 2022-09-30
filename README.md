@@ -35,5 +35,5 @@ terraform apply
 ~~~
 - Para fazer deploy da aplicação via helm é só setar o seguinte comando:
 ~~~javascript
-helm install --upgrade python-tempest-app ./python-app-tempest/ --set versionContainer=1.0.0
+helm upgrade --install python-tempest-app ./python-app-tempest/ --set versionContainer=1.0.0
 ~~~

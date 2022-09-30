@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-svc
 spec:
-  type: {{ .Values.Type }}
   selector:
     app: {{ .Release.Name }}
   ports:
     - port: {{ .Values.Port}}
-      nodePort: 30080
+      targetPort: {{ .Values.Port}}
+  type: {{ .Values.Type }}

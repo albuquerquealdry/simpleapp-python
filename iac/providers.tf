@@ -13,14 +13,3 @@ provider "aws" {
   profile = "default"
   region  = "us-west-2"
 }
-
-resource "kubernetes_service" "LoadBalancer" {
-  metadata {
-    name = "load-balancer-flask-api"
-  }
-    port {
-      port = 80
-      target_port = 80
-    }
-    type = "LoadBalancer"
-  }
