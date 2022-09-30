@@ -67,6 +67,8 @@ istioctl dashboard prometheus
 istioctl dashboard grafana
 ~~~
 
+*OBS, caso não esteja com istioctl setado é só executar o istioctl indo até dento do bin do pacote do istio.
+
 ## 5: Implante a ferramenta para coleta dos logs da aplicação, devem ser visualizados em um dashboard.
 - Implantei via grafana Loki e promtail, deixei um script em um diretório chamado *setup-loki-logs*, ele já faz todo
 o setup e exponhe o grafana para vizualização de logs via LoandBalancer. 
