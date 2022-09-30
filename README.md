@@ -37,3 +37,47 @@ terraform apply
 ~~~javascript
 helm upgrade --install python-tempest-app ./python-app-tempest/ --set versionContainer=1.0.0
 ~~~
+
+- Para testar a aplicação é só setar o comando:
+~~~javascript
+kubectl get svc 
+~~~
+- E chamar a aplicação via o endereço do loandbalancer gerado.
+* OBS: Esperar uns minutos antes de chamar para o loandBalancer Syncar
+
+## 4: Configure a monitoração dos recursos do Kubernetes (Prometheus, ELK, Datadog e etc....).
+
+- Subir tudo via istio service mesh, para aplicar as alterações é só entrar no diretorio *setup-monitoring* e executar o seguinte comando:
+~~~javascript
+sh telemetry-istio.sh
+~~~
+- Em seguida estrá pronto e configurado o Kiali, o Prometheus, o Grafana e o Jeaguer.
+    - O grafana já vem com dashboards nativos para a observabilidade dos componentes que estão com a label do istio-inject
+- Você poderá vê os dashboards da seguinte maneira:
+- Para vê o kiali 
+~~~javascript
+istioctl dashboard kiali
+~~~
+- Para vê o prometheus 
+~~~javascript
+istioctl dashboard prometheus
+~~~
+- Para vê o grafana 
+~~~javascript
+istioctl dashboard grafana
+~~~
+
+## 5: Implante a ferramenta para coleta dos logs da aplicação, devem ser visualizados em um dashboard.
+- Implantei via grafana Loki e promtail, deixei um script em um diretorio chamado *setup-loki-logs*, ele já faz todo
+o setup e exponhe o grafana para vizualização de logs via LoandBalancer. 
+- Para executar: 
+~~~javascript
+sh loki-logs.sh
+~~~
+* OBS: Esperar uns minutos antes de chamar para o loandBalancer Syncar.
+- O deamonset vai mapear os namespaces e coletar tudo no loki posibilitando a vizualização no grafana.
+## 6: Desenvola o script (Python ou Go) que liste todos os recursos criados anteriormente na conta da AWS.
+
+- Dentro do diretorio automation-python tem o script com o seu Readme, que auxilia a execução.
+
+## Obrigado <3
